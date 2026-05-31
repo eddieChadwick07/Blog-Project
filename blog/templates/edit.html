@@ -1,0 +1,45 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Edit Article</title>
+
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+<body>
+
+<header>
+    <h1>
+        <a href="{% url 'home' %}">My Personal Blog</a>
+    </h1>
+</header>
+
+<div class="container">
+
+    <h2>Edit Article</h2>
+
+    <p>
+        <a href="{% url 'article_detail' article.pk %}">
+            ← Back to Article
+        </a>
+    </p>
+
+    <!-- Edit form -->
+    <form method="post">
+        {% csrf_token %}
+
+        {{ form.as_p }}
+
+        <button type="submit">
+            Update Article
+        </button>
+    </form>
+
+</div>
+
+</body>
+</html>
